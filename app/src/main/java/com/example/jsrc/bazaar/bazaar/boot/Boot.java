@@ -1,22 +1,10 @@
 package com.example.jsrc.bazaar.bazaar.boot;
 
+import com.example.jsrc.bazaar.bazaar.time.CurrentTimeProvider;
 
-public class Boot {
+public class Boot
+{
 
-
-
-
-
-
-
-    private void initInModelThread()
-    {
-        final class CurrentTimeProvider
-    }
-
+        final CurrentTimeProvider currentTimeProvider = new CurrentTimeProvider();
 
 }
-
-
-
-
