@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Bazaar</string>
+
+    <string name="username_text_view">Username: </string>
+    <string name="password_text_view">Password: </string>
+    <string name="confirm_password_text_view">Confirm Password: </string>
+    <string name="email_text_view">Email: </string>
+
+    <string name="sign_up_button">Sign Up</string>
+    <string name="facebook_button">Sign Up With Facebook</string>
+    <string name="google_button">Sign Up With Google</string>
+
+    <string name="username_hint">Enter Username</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="email_hint">Enter Email</string>
+
+
 </resources>
