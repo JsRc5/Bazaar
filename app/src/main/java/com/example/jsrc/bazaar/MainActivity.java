@@ -1,9 +1,13 @@
 package com.example.jsrc.bazaar;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class Starter extends AppCompatActivity {
+/**
+ * Created by jsrc on 2018-03-13.
+ */
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
