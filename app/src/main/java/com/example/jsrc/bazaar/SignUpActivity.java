@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -21,17 +24,37 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText _passwordEditText;
     private EditText _confirmPasswordEditText;
     private EditText _emailEditText;
+    private TextView _warningWrongPassword;
+
+    private String _username;
+    private String _password;
+    private String _confirmPassword;
+    private String _email;
+
+    private boolean _firstTimeConfirmPassword = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        Log.d(TAG,"Test");
+
+        _warningWrongPassword = (TextView) findViewById(R.id.warning_wrong_password);
+        _warningWrongPassword.setText("");
+
 
         _signUpButton = findViewById(R.id.sign_up_button);
         _signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG,"Sign Up Button Clicked");
+
+                Log.d(TAG,"Username = " + _username);
+                Log.d(TAG,"EMail = " + _email);
+                Log.d(TAG,"Password = " + _password);
+                Log.d(TAG,"Confirm password = " + _confirmPassword);
+
+
             }
         });
 
@@ -61,6 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Log.d(TAG,"Username Text Changed");
+                _username = charSequence.toString();
 
             }
 
@@ -80,6 +104,14 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Log.d(TAG,"Password Text Changed");
+                _password = charSequence.toString();
+                if (_firstTimeConfirmPassword) {
+                    if (_confirmPassword.equals(_password)) {
+                        _warningWrongPassword.setText("");
+                    } else {
+                        _warningWrongPassword.setText("!");
+                    }
+                }
 
             }
 
@@ -99,7 +131,13 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Log.d(TAG,"Confirm Password Text Changed");
-
+                _firstTimeConfirmPassword = true;
+                _confirmPassword = charSequence.toString();
+                if ( _confirmPassword.equals(_password)) {
+                    _warningWrongPassword.setText("");
+                } else {
+                    _warningWrongPassword.setText("!");
+                }
             }
 
             @Override
@@ -118,6 +156,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Log.d(TAG,"Email Text Changed");
+                _email = charSequence.toString();
 
             }
 

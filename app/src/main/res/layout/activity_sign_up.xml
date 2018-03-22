@@ -11,6 +11,7 @@
         android:gravity="center">
 
         <TextView
+            android:id ="@+id/test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="12dp"
@@ -41,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="24dp"
+            android:inputType="textPassword"
             android:hint="@string/password_hint"/>
 
     </LinearLayout>
@@ -58,10 +60,19 @@
 
         <EditText
             android:id="@+id/confirm_password_edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="24dp"
+            android:inputType="textPassword"
             android:hint="@string/confirm_password_hint"/>
+
+        <TextView
+            android:id="@+id/warning_wrong_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:text="@string/warning_wrong_password"
+            android:textColor="@android:color/holo_red_dark" />
 
     </LinearLayout>
 

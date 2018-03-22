@@ -5,6 +5,7 @@
     <string name="password_text_view">Password: </string>
     <string name="confirm_password_text_view">Confirm Password: </string>
     <string name="email_text_view">Email: </string>
+    <string name="warning_wrong_password">!</string>
 
     <string name="sign_up_button">Sign Up</string>
     <string name="facebook_button">Sign Up With Facebook</string>
