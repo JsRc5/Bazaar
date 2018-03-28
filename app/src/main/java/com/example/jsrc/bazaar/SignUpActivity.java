@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.jsrc.bazaar.model.SignUpUser;
 import com.example.jsrc.bazaar.model.User;
 
 import java.io.Serializable;
@@ -64,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity
                 if (userParametersAreMet())
                 {
                     final String id = UUID.randomUUID().toString();
-                    final User user = new User(id, _username, _password, _email);
+                    final SignUpUser user = new SignUpUser(id, _username, _password, _email);
                     Intent intent = newIntent(SignUpActivity.this, user);
                     startActivity(intent);
                 }
@@ -183,7 +184,7 @@ public class SignUpActivity extends AppCompatActivity
         });
     }
 
-    private Intent newIntent(Context packageContent, User user)
+    private Intent newIntent(Context packageContent, SignUpUser user)
     {
         Intent intent = new Intent(packageContent, UserInformationActivity.class);
         intent.putExtra(COM_EXAMPLE_JSRC_BAZAAR_USER, user);
