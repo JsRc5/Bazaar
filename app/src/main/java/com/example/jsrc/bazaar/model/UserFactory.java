@@ -17,9 +17,7 @@ public class UserFactory
         return new User(UUID.randomUUID().toString(),
                         userName,
                         password,
-                        email,
-                        distance,
-                        preferences);
+                        email);
     }
 
     public User updatePassword(final User old, final String password)
@@ -27,8 +25,6 @@ public class UserFactory
         return new User(old.getId(),
                         old.getUserName(),
                         password,
-                        old.getEmail(),
-                        old.getDistance(),
-                        old.getPreferences());
+                        old.getEmail());
     }
 }

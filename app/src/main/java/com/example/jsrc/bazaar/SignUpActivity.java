@@ -1,5 +1,7 @@
 package com.example.jsrc.bazaar;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -10,11 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.jsrc.bazaar.model.User;
 
-public class SignUpActivity extends AppCompatActivity {
+import java.io.Serializable;
+import java.util.UUID;
 
+public class SignUpActivity extends AppCompatActivity
+{
     private static final String TAG = "SignUpActivity";
+    public static final String COM_EXAMPLE_JSRC_BAZAAR_USER = "com.example.jsrc.bazaar.user";
 
     private Button _signUpButton;
     private Button _facebookButton;
@@ -34,7 +40,8 @@ public class SignUpActivity extends AppCompatActivity {
     private boolean _firstTimeConfirmPassword = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         Log.d(TAG,"Test");
@@ -54,7 +61,13 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.d(TAG,"Password = " + _password);
                 Log.d(TAG,"Confirm password = " + _confirmPassword);
 
-
+                if (userParametersAreMet())
+                {
+                    final String id = UUID.randomUUID().toString();
+                    final User user = new User(id, _username, _password, _email);
+                    Intent intent = newIntent(SignUpActivity.this, user);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -77,55 +90,57 @@ public class SignUpActivity extends AppCompatActivity {
         _usernameEditText = findViewById(R.id.username_edit_text);
         _usernameEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
                 Log.d(TAG,"Username Text Changed");
                 _username = charSequence.toString();
-
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void afterTextChanged(Editable editable)
+            {
             }
         });
 
         _passwordEditText = (EditText) findViewById(R.id.password_edit_text);
-        _passwordEditText.addTextChangedListener(new TextWatcher() {
+        _passwordEditText.addTextChangedListener(new TextWatcher()
+        {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Log.d(TAG,"Password Text Changed");
                 _password = charSequence.toString();
+
                 if (_firstTimeConfirmPassword) {
-                    if (_confirmPassword.equals(_password)) {
+                    if (_confirmPassword.equals(_password))
                         _warningWrongPassword.setText("");
-                    } else {
+                    else
                         _warningWrongPassword.setText("!");
-                    }
                 }
 
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void afterTextChanged(Editable editable)
+            {
             }
         });
 
         _confirmPasswordEditText = (EditText) findViewById(R.id.confirm_password_edit_text);
-        _confirmPasswordEditText.addTextChangedListener(new TextWatcher() {
+        _confirmPasswordEditText.addTextChangedListener(new TextWatcher()
+        {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
             }
 
             @Override
@@ -133,39 +148,50 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.d(TAG,"Confirm Password Text Changed");
                 _firstTimeConfirmPassword = true;
                 _confirmPassword = charSequence.toString();
-                if ( _confirmPassword.equals(_password)) {
+
+                if ( _confirmPassword.equals(_password))
                     _warningWrongPassword.setText("");
-                } else {
+                else
                     _warningWrongPassword.setText("!");
-                }
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void afterTextChanged(Editable editable)
+            {
             }
         });
 
         _emailEditText = (EditText) findViewById(R.id.email_edit_text);
-        _emailEditText.addTextChangedListener(new TextWatcher() {
+        _emailEditText.addTextChangedListener(new TextWatcher()
+        {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
                 Log.d(TAG,"Email Text Changed");
                 _email = charSequence.toString();
-
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void afterTextChanged(Editable editable)
+            {
             }
         });
-
     }
 
+    private Intent newIntent(Context packageContent, User user)
+    {
+        Intent intent = new Intent(packageContent, UserInformationActivity.class);
+        intent.putExtra(COM_EXAMPLE_JSRC_BAZAAR_USER, user);
+        return intent;
+    }
+
+
+    private boolean userParametersAreMet() {
+        return _username!=null && _password!= null && _email!=null;
+    }
 }
