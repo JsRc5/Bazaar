@@ -26,36 +26,35 @@ public class UserInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_information);
 
+        _distanceBar = findViewById(R.id.distanceBar);
+        _distanceBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                _distance = i;
 
-//        _distanceBar.findViewById(R.id.distanceBar);
-//        _distanceBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-//                _distance = i;
-//
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//        });
+            }
 
-//        _doneButton.findViewById(R.id.doneButton);
-//        _doneButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Log.d(TAG,"Clicked Done Button");
-////                Log.d(TAG, "distance = " + _distance + " km");
-//
-//            }
-//        });
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        _doneButton = findViewById(R.id.doneButton);
+        _doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.d(TAG,"Clicked Done Button");
+                Log.d(TAG, "distance = " + _distance + " km");
+
+            }
+        });
 
 
 
