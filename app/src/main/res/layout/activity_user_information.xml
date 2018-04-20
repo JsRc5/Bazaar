@@ -5,19 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="368dp"
-        android:layout_height="295dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ScrollView>
-
     <TextView
         android:id="@+id/distanceTextView"
         android:layout_width="wrap_content"
@@ -28,9 +15,9 @@
         android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
         android:id="@+id/distanceBar"
@@ -51,15 +38,96 @@
         android:id="@+id/doneButton"
         android:layout_width="148dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="DONE"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/distanceBar" />
+
+    <ScrollView
+        android:layout_width="368dp"
+        android:layout_height="302dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doneButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/artsAndCrafts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Arts &amp; Crafts"
+                android:gravity="center"
+                android:onClick="onCheckboxClicked"
+                android:textSize="50sp"/>
+
+            <CheckBox
+                android:id="@+id/electronics"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Electronics"
+                android:gravity="center"
+                android:onClick="onCheckboxClicked"
+                android:textSize="50sp"/>
+
+            <CheckBox
+                android:id="@+id/books"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Books"
+                android:gravity="center"
+                android:onClick="onCheckboxClicked"
+                android:textSize="50sp"/>
+
+            <CheckBox
+                android:id="@+id/clothing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Clothing"
+                android:gravity="center"
+                android:onClick="onCheckboxClicked"
+                android:textSize="50sp"/>
+
+            <CheckBox
+                android:id="@+id/home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Home"
+                android:gravity="center"
+                android:onClick="onCheckboxClicked"
+                android:textSize="50sp"/>
+
+            <CheckBox
+                android:id="@+id/bikes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Bikes"
+                android:gravity="center"
+                android:onClick="onCheckboxClicked"
+                android:textSize="50sp"/>
+
+            <CheckBox
+                android:id="@+id/misc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Misc"
+                android:gravity="center"
+                android:onClick="onCheckboxClicked"
+                android:textSize="50sp"/>
+            </LinearLayout>
+    </ScrollView>
+
 
 
 </android.support.constraint.ConstraintLayout>

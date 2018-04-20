@@ -2,8 +2,11 @@ package com.example.jsrc.bazaar.model;
 
 public enum Preferences
 {
-    ELECTRONICS,
-    BIKES,
-    AUDIO,
-    COMPUTERS
+    ArtsAndCrafts,
+    Electronics,
+    Bikes,
+    Home,
+    Misc,
+    Books,
+    Clothing
 }
